@@ -551,7 +551,7 @@ main { position: relative; z-index: 1; }
 /* images already ship with their own white border — no frame, just a soft shadow */
 /* uniform HEIGHT so every photo reads the same size (widths vary by aspect) */
 .polaroid { flex: none; margin: 0 clamp(6px, 0.9vw, 16px); transform: rotate(var(--r,0deg)); }
-.polaroid img { height: clamp(200px, 18vw, 256px); width: auto; display: block; image-rendering: -webkit-optimize-contrast; filter: drop-shadow(0 10px 22px rgba(20,28,44,.20)); }
+.polaroid img { height: clamp(200px, 18vw, 256px); width: auto; aspect-ratio: 6 / 5; object-fit: cover; display: block; image-rendering: -webkit-optimize-contrast; filter: drop-shadow(0 10px 22px rgba(20,28,44,.20)); }
 
 /* current page in desktop nav */
 .nav__links a[aria-current="page"] .nav__label { color: var(--ink); font-weight: 800; }
