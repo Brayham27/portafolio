@@ -27,8 +27,8 @@
   --radius: 14px;
   --maxw: 1180px;
   --pad: clamp(26px, 5vw, 72px);
-  --font: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --display: "Helvetica Neue", "Inter", Arial, sans-serif;
+  --font: "Satoshi", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --display: "Helvetica Neue", "Satoshi", Arial, sans-serif;
   --hand: "Caveat", "Kalam", cursive;
   --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
 }
