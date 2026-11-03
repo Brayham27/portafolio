@@ -267,18 +267,24 @@
       repelC.addEventListener('pointermove', function (e) {
         if (dragging) return;
         pointerActive = true;
+        // read phase: measure every element before any style write (avoids layout thrashing)
+        var hits = [];
         items.forEach(function (el) {
           if (isPlaced(el)) return;
           var r = el.getBoundingClientRect();
-          var dx = (r.left + r.width / 2) - e.clientX;
-          var dy = (r.top + r.height / 2) - e.clientY;
+          hits.push({ el: el, cx: r.left + r.width / 2, cy: r.top + r.height / 2 });
+        });
+        // write phase
+        hits.forEach(function (h) {
+          var dx = h.cx - e.clientX;
+          var dy = h.cy - e.clientY;
           var dist = Math.sqrt(dx * dx + dy * dy) || 1;
           if (dist < RADIUS) {
             var f = 1 - dist / RADIUS;
             var nx = dx / dist, ny = dy / dist;
-            set(el, (nx * PUSH * f).toFixed(1), (ny * PUSH * f).toFixed(1), (nx * 9 * f).toFixed(1), (1 + 0.06 * f).toFixed(3));
+            set(h.el, (nx * PUSH * f).toFixed(1), (ny * PUSH * f).toFixed(1), (nx * 9 * f).toFixed(1), (1 + 0.06 * f).toFixed(3));
           } else {
-            reset(el);
+            reset(h.el);
           }
         });
       });
@@ -334,13 +340,17 @@
         ticking = false;
         if (pointerActive) return;
         var vh = window.innerHeight;
+        // read phase
+        var measures = [];
         items.forEach(function (el, i) {
           if (isPlaced(el) || el === dragging) return;
           var r = el.getBoundingClientRect();
-          var rel = (r.top + r.height / 2 - vh / 2) / vh;
-          var dir = (i % 2 === 0) ? 1 : -1;
-          el.style.setProperty('--dy', (rel * 18 * dir).toFixed(1) + 'px');
-          el.style.setProperty('--dr', (rel * 2.5 * dir).toFixed(1) + 'deg');
+          measures.push({ el: el, rel: (r.top + r.height / 2 - vh / 2) / vh, dir: (i % 2 === 0) ? 1 : -1 });
+        });
+        // write phase
+        measures.forEach(function (m) {
+          m.el.style.setProperty('--dy', (m.rel * 18 * m.dir).toFixed(1) + 'px');
+          m.el.style.setProperty('--dr', (m.rel * 2.5 * m.dir).toFixed(1) + 'deg');
         });
       };
       var onScroll = function () { if (ticking) return; ticking = true; requestAnimationFrame(drift); };
