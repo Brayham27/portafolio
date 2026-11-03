@@ -95,6 +95,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Caveat:wght@500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" media="print" onload="this.media='all'" />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Caveat:wght@500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" /></noscript>
+  <link rel="preload" as="image" href="assets/images/proj-cemex-driver.webp" fetchpriority="high" />
   <link rel="stylesheet" href="css/styles.css?v=55" />
 </head>
 <body>
@@ -162,7 +163,7 @@
         <a class="card__go" href="work-cemex.html" aria-label="Open CEMEX Driver App case study"></a>
         <span class="tape tape--tr"></span>
         <span class="label label--cemex">Driver app Cemex</span>
-        <img src="assets/images/proj-cemex-driver.webp" alt="Driver app Cemex" />
+        <img src="assets/images/proj-cemex-driver.webp" alt="Driver app Cemex" fetchpriority="high" decoding="async" />
       </article>
 
       <article class="card card--identity card--link reveal" style="--rot:1.5deg;">
@@ -403,6 +404,6 @@
     </nav>
   </footer>
 
-  <script src="js/main.js?v=23"></script>
+  <script defer src="js/main.js?v=23"></script>
 </body>
 </html>
