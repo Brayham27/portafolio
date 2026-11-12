@@ -18,10 +18,9 @@
         s.src = 'https://www.googletagmanager.com/gtag/js?id=G-72JWC0ZJKR';
         document.head.appendChild(s);
       }
-      ['scroll', 'pointerdown', 'keydown', 'touchstart'].forEach(function (ev) {
+      ['scroll', 'mousemove', 'pointerdown', 'keydown', 'touchstart'].forEach(function (ev) {
         window.addEventListener(ev, loadGA, { once: true, passive: true });
       });
-      window.addEventListener('load', function () { setTimeout(loadGA, 3000); });
     })();
   </script>
   <title>Brayham Jaimes — Senior Product Designer</title>
@@ -210,14 +209,7 @@
         <img src="assets/images/proj-coop.webp" alt="Coop Project" width="1600" height="1046" loading="lazy" />
       </article>
 
-      <article class="card card--pokewall card--link reveal" style="--rot:1.8deg;">
-        <a class="card__go" href="work-pokewall.html" aria-label="Open PokéWall case study"></a>
-        <span class="tape tape--tr"></span>
-        <span class="label label--pokewall" style="bottom:-10px; right:34px; transform:rotate(3deg);">PokéWall</span>
-        <img src="assets/images/proj-pokewall.webp" alt="PokéWall interface: configuration panel and a rainbow collage of Pokémon" width="1280" height="800" loading="lazy" />
-      </article>
-
-      <div class="cd-disc reveal" aria-hidden="true" style="grid-column:1 / -1;">
+      <div class="cd-disc reveal" aria-hidden="true">
         <img src="assets/decor/cd-placeholder.png" alt="" loading="lazy" />
         <span class="cd-disc__sheen"></span>
         <span class="cd-disc__gloss"></span>

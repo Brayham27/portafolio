@@ -18,10 +18,9 @@
         s.src = 'https://www.googletagmanager.com/gtag/js?id=G-72JWC0ZJKR';
         document.head.appendChild(s);
       }
-      ['scroll', 'pointerdown', 'keydown', 'touchstart'].forEach(function (ev) {
+      ['scroll', 'mousemove', 'pointerdown', 'keydown', 'touchstart'].forEach(function (ev) {
         window.addEventListener(ev, loadGA, { once: true, passive: true });
       });
-      window.addEventListener('load', function () { setTimeout(loadGA, 3000); });
     })();
   </script>
   <title>Claro Products — Brayham Jaimes</title>
